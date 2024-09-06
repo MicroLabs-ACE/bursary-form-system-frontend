@@ -1,10 +1,8 @@
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
-    <div className="App">
-      App
-    </div>
+    <div className='app'>Bursary App</div>
   );
 }
 
