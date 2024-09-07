@@ -1,0 +1,42 @@
+.form-wrapper{
+    background-color: white;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    .form-header{
+        display: flex;
+        height: max-content;
+        margin: 4rem;
+        .logo-break{
+            height: auto;
+            width: 3px;
+            background-color: $primary-blue;
+            margin:0 2.7rem;
+        }
+        img{
+            max-width: 9.8rem;
+            max-height: 9.8rem;
+            object-fit: cover;
+        }
+    }
+    .ease-form{
+        width: 60rem;
+        background-color: $light-blue;
+        padding: 6rem 5.5rem;
+        border-radius: 5px;
+        input{
+            padding: 1.4rem 2rem;
+            outline: none;
+            border-radius: 7px;
+            width: 100%;
+            background-color: $light-blue;
+            border: 1px solid $border-blue;
+            margin: 1rem 0 1.9rem;
+        }
+        .sect-break{
+            text-align: center;
+            width: 100%;
+            padding: 2.7rem 0 1.4rem;
+        }
+    }
+}

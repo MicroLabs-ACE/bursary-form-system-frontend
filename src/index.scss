@@ -11,3 +11,62 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: inherit;
+}
+html{
+  height: 100%;
+  width: 100%;
+}
+body{
+  font-size: 62.5%;
+}
+p{
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+//Colors definition
+$primary-blue:#28145C;
+$grey-e:#EEEEEE;
+$grey-f:#FFFFFF;
+$light-blue:#E7ECFF63;
+$border-blue:#28145C17;
+$black: #000000;
+
+
+
+h4{
+  color: $primary-blue;
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+h6{
+  color: $primary-blue;
+  font-size: 1.8rem;
+}
+
+button{
+  padding: 1.4rem 2rem;
+  outline: none;
+  border-radius: 7px;
+  width: 100%;
+  border: none;
+  &.variant-a{
+    background-color:$primary-blue ;
+    color: $grey-e;
+  }
+  &.variant-b{
+    background-color: $light-blue;
+    border: 1px solid $border-blue;
+  }
+  &.center{
+    text-align: center;
+  }
+}
+
+@import '../src//styles/sign-up.scss';
