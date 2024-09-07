@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 function App() {
   return (
     <div className='app'>
-      Front page
-      <Link to='/sign-up'>This is the link</Link>
+      <h2>This is the home page</h2>
+      <Link to='/sign-up'>Click to go to the sign up page</Link>
     </div>  
   );
 }

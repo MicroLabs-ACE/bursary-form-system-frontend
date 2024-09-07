@@ -2,7 +2,7 @@ import React from 'react'
 
 function EaseForm() {
   return (
-    <div className="ease-form">
+    <div className="ease-form ">
             <form>
                 <label htmlFor='email'><p>Email</p></label>
                 <input name='email' placeholder='Enter your email' id='email'/>
