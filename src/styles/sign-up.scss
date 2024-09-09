@@ -2,11 +2,12 @@
     background-color: white;
     display: grid;
     place-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding-bottom: 2rem;
     .form-header{
         display: flex;
         height: max-content;
-        margin: 4rem;
+        margin: 4rem 2rem 0;
         .logo-break{
             height: auto;
             width: 3px;
@@ -40,7 +41,7 @@
         }
     }
     .otp{
-        margin-top: 3rem;
+        margin-top: 2rem;
         width: 55rem;
         background-color: $light-blue;
         padding: 3.3rem 3.5rem;

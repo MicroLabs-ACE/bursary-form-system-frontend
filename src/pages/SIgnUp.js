@@ -14,8 +14,7 @@ function SIgnUp() {
           <h6>powered by OAU BURSARY </h6>
         </div>
       </div>
-      <EaseForm/>
-       <OTP/>
+      <OTP/>
     </div>
 
   )

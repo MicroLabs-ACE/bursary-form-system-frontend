@@ -1,0 +1,26 @@
+.modal{
+    width: 100%;
+    padding: .8rem 1.7rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: $primary-blue;
+    border-radius: 5px;
+    span{
+        color: #fff;
+        display: block;
+        border-radius: 50%;
+        width: 1.3rem;
+        height: 1.3rem;
+        display: grid;
+        place-items: center;
+        font-size: 1rem;
+        font-weight: 300;
+    }
+    &.info{
+        background-color: $success-green;
+        span{
+        background-color: $primary-green;
+        }
+    }
+}
