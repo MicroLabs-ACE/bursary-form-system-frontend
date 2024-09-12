@@ -7,7 +7,9 @@ function EaseForm() {
   const [message, setMessage] = useState('')
   const [type, setType] = useState('')
   const navigate = useNavigate();
+  const [submitting, setSubmitting] = useState(false)
   const sendOTP = async()=>{
+    setSubmitting(true)
     try {
       const response = await fetch('https://bursary-form-system-backend.onrender.com/auth/otp/request', {
         method: 'POST',
@@ -20,10 +22,13 @@ function EaseForm() {
       if (response.ok) {
         setMessage('OTP verified successfully!');
         navigate('/dashboard');
+        setSubmitting(false)
       } else {
         setMessage('Invalid Mail. Please enter a valid Mail.');
         setType('error')
         setModal(true)
+        setSubmitting(false)
+
       }
     } catch (error) {
       setMessage('Error verifying OTP. Please try again.');
@@ -33,9 +38,8 @@ function EaseForm() {
     <div className="ease-form ">
       {showModal&&<ErrorModal msg={message} type={type}/>}
                 <label htmlFor='email'><p>Email</p></label>
-                {message}
                 <input name='email' placeholder='Enter your email' id='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                <button className='variant-a' onClick={sendOTP}>Send OTP code</button>
+                <button className='variant-a' onClick={sendOTP}>{submitting?('Checking...'):('Send OTP code')}</button>
                 <div className='sect-break'><p>OR</p></div>
                 <button className='variant-b'>Continue with Google</button>
         </div>
