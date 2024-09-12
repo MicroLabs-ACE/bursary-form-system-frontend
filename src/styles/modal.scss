@@ -6,6 +6,10 @@
     align-items: center;
     color: $primary-blue;
     border-radius: 5px;
+    &.error{
+        color: red;
+        background-color: rgb(250, 246, 246);
+    }
     span{
         color: #fff;
         display: block;
