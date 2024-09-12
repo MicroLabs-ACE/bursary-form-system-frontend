@@ -34,6 +34,9 @@ function EaseForm() {
       setMessage('Error verifying OTP. Please try again.');
     }
   }
+  useEffect(()=>{
+    setModal(false)
+  },[email])
   return (
     <div className="ease-form ">
       {showModal&&<ErrorModal msg={message} type={type}/>}

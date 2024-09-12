@@ -9,6 +9,9 @@
     &.error{
         color: red;
         background-color: rgb(250, 246, 246);
+        span{
+            background-color: red;
+            }
     }
     span{
         color: #fff;
