@@ -1,0 +1,82 @@
+.form-wrapper{
+    background-color: white;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding-bottom: 2rem;
+    .form-header{
+        display: flex;
+        height: max-content;
+        margin: 4rem 2rem 0;
+        .logo-break{
+            height: auto;
+            width: 3px;
+            background-color: $primary-blue;
+            margin:0 2.7rem;
+        }
+        img{
+            max-width: 9.8rem;
+            max-height: 9.8rem;
+            object-fit: cover;
+        }
+    }
+    .ease-form{
+        width: 60rem;
+        background-color: $light-blue;
+        padding: 6rem 5.5rem;
+        border-radius: 5px;
+        input{
+            padding: 1.4rem 2rem;
+            outline: none;
+            border-radius: 7px;
+            width: 100%;
+            background-color: $light-blue;
+            border: 1px solid $border-blue;
+            margin: 1rem 0 1.9rem;
+        }
+        .sect-break{
+            text-align: center;
+            width: 100%;
+            padding: 2.7rem 0 1.4rem;
+        }
+    }
+    .otp{
+        margin-top: 2rem;
+        width: 55rem;
+        background-color: $light-blue;
+        padding: 3.3rem 3.5rem;
+        border-radius: 5px;
+        label{
+            text-align: center;
+            opacity: 0.9;
+        }
+        .otp-code{
+            padding: 2.1rem 0 3.1rem;
+            display: flex;
+            gap: 1.8rem;
+            justify-content: center;
+            input{
+                font-size: 2rem;
+                width: 3.6rem;
+                height: 3.6rem;
+                border-radius: 8px;
+                border: 1px solid #CCD2EB;
+                text-align: center;
+                background-color: transparent;
+                color: $primary-blue;
+            }
+        }
+        .resend-code{
+            margin-top: 2.3rem;
+            color: #000;
+            font-size: 1.4rem;
+            font-weight: 300;
+            text-align: center;
+            span{
+                color: $primary-blue;
+                font-weight: 700;
+                cursor: pointer;
+            }
+        }
+    }
+}

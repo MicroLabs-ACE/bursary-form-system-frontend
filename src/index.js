@@ -4,10 +4,22 @@ import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import SIgnUp from './pages/SIgnUp';
+import Navbar from './components/Navbar';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+    <Navbar/>
+
+      <Routes>
+        <Route path="/" element={<App />}/>
+        <Route path="sign-up" element={<SIgnUp />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
