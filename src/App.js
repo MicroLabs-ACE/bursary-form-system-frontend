@@ -92,9 +92,8 @@ function App() {
                 12/12/2023
                 </p>
                 </div>
-                <div className='form-card__edit'>
-                  <img src={edit} alt='edit  form'/>
-                  <p>Edit</p>
+                <div className='form-card__receipt'>
+                  <p>Download Receipt</p>
                 </div>
               </div>
 

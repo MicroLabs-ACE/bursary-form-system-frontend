@@ -4,6 +4,7 @@ import Logo from "../Assets/logo.png"
 import OTP from '../components/OTP'
 
 function SIgnUp() {
+  
   return (
     <div className='form-wrapper'>
       <div className='form-header'>
@@ -14,7 +15,7 @@ function SIgnUp() {
           <h6>powered by OAU BURSARY </h6>
         </div>
       </div>
-      <OTP/>
+      <EaseForm/>
     </div>
 
   )
