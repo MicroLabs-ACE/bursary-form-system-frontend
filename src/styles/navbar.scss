@@ -31,25 +31,64 @@
     }
 }
 @media screen and (max-width:700px) {
-    .hamburger{
-        display: flex;
-        flex-direction: column;
-        gap: .5rem;
-        span{
-            display: block;
-            width: 2.3rem;
-            height: 3px;
-            background-color: $primary-blue;
+    .navbar{
+        padding: .6rem 3rem 0;
+        img{
+            max-width: 3.6rem;
+            max-height: 3.6rem;
         }
-    }
-    .navbar__links{
-        .links{
-            display: block;
+        .hamburger{
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            span{
+                display: block;
+                width: 2.3rem;
+                height: 3px;
+                background-color: $primary-blue;
+            }
+        }
+        &__links{
             position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             background-color: white;
-            color: $primary-blue;
-            width: 100%;
+            min-height: 100vh;
+          
+            &.noshow{
+                display: none;
+            }
+            .cancel{
+                width: 100%;
+                height: 100%;
+                padding: 4rem 4rem ;
+                margin-left: auto;
+                width: fit-content;
+                span{
+                    display: block;
+                    width: 2.3rem;
+                    height: 4px;
+                    background-color:$primary-blue;
+                    transform: rotate(45deg);
+                    &:last-child{
+                    transform: rotate(-45deg);
+                    margin-top: -4px;
+                    }
+                }
+            }
+            .links{
+                gap: 3rem;
+                color: $primary-blue;
+                width: 100%;
+                flex-direction: column;
+                p{
+                    font-size: 1.8rem;
+                }
+                a.active{
+                    border-bottom: none;
+                }
+            }
         }
     }
 }

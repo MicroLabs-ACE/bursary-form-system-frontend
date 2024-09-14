@@ -8,8 +8,8 @@ function Navbar() {
   return (
     <div className='navbar'>
         <img src={Logo} alt='logo '/>
-        <div className={`navbar__links ${showlinks&&'active'}`}>
-          <div className='hamburger'>
+        <div className={`navbar__links ${!showlinks&&'noshow'}`}>
+        <div className='cancel' onClick={()=>setShowlinks(false)}>
               <span></span>
               <span></span>
             </div>
@@ -19,10 +19,15 @@ function Navbar() {
             <Link><p>Form list</p></Link>
             <Link><p>Add Account</p></Link>
            </div>
+         
         </div>
         <div className='notification'>
             <img src={Notification} alt='notification'/>
         </div>
+        <div className='hamburger' onClick={()=>setShowlinks(true)}>
+              <span></span>
+              <span></span>
+          </div>
     </div>
   )
 }

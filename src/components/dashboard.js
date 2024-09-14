@@ -35,7 +35,7 @@ function Dashboard() {
   return (
     <>
         <Navbar/>
-      <div className='app container'>
+      <div className='container'>
       <Modal type='info'msg="You have no pending form" />
       <div className='form-section'>
         <div className='available-forms'>
@@ -63,7 +63,7 @@ function Dashboard() {
           </div>
           <div className='form-list'>
             {availableList.filter(list=>{return (list.id<3)}).map((list)=>{return(
-              <div className='form-card'>
+              <div className='form-card' key={list.id}>
                 <div className='form-card__info'>
                 <p className='midi'>{list?.title} (English dept. unit)</p>
                 <p className='mini'>
@@ -89,7 +89,7 @@ function Dashboard() {
           </div>
           <div className='form-list'>
             {availableList.filter(list=>{return (list.id<3)}).map((list)=>{return(
-              <div className='form-card'>
+              <div className='form-card' key={list.id}>
                 <div className='form-card__info'>
                 <p className='midi'>{list?.title} (English dept. unit)</p>
                 <p className='mini'>
