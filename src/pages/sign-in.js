@@ -1,8 +1,9 @@
 import React from 'react'
 import FormHeader from '../components/formHeader'
-import ErrorModal from '../components/ErrorModal'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Modal from '../components/Modal';
 function Signin() {
   const [showModal, setModal] = useState(false)
   const [email, setEmail] = useState('')
@@ -13,27 +14,34 @@ function Signin() {
   const sendOTP = async()=>{
     setSubmitting(true)
     try {
-      const response = await fetch('https://bursary-form-system-backend.onrender.com/auth/otp/request', {
-        method: 'POST',
+      const response = await axios.post('https://bursary-form-system-backend.onrender.com/auth/otp/request', {email},
+        {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
       });
       console.log(response)
-      if (response.ok) {
-        setMessage('OTP verified successfully!');
-        navigate('/dashboard');
+      if(response.status === 201) {
+        setMessage('OTP sent to your Mail!');
+        navigate('/confirm-otp');
         setSubmitting(false)
-      } else {
+      } else if ((response.status === 400)) {
         setMessage('Invalid Mail. Please enter a valid Mail.');
         setType('error')
         setModal(true)
         setSubmitting(false)
-
       }
     } catch (error) {
-      setMessage('Error verifying OTP. Please try again.');
+      if (error.response && error.response.status === 400) {
+         setMessage('Mail entered is invalid, enter a valid mail.');
+        setType('error')
+        setModal(true)
+      } else if (error.response) {
+        setMessage('Error verifying Mail. Please try again.');
+        setType('error')
+        setModal(true)
+      }
+      setSubmitting(false)
     }
   }
   useEffect(()=>{
@@ -42,9 +50,9 @@ function Signin() {
 
   return (
     <div className='form-wrapper'>
+      {showModal&&<Modal type={type} msg={message}/>}
         <FormHeader/>
         <div className="sign-in ">
-      {showModal&&<ErrorModal msg={message} type={type}/>}
                 <label htmlFor='email'><p>Email</p></label>
                 <input name='email' placeholder='Enter your email' id='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
                 <button className='variant-a' onClick={sendOTP}>{submitting?('Checking...'):('Send OTP code')}</button>
