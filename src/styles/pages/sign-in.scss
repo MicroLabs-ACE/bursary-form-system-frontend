@@ -2,7 +2,6 @@
     background-color: white;
     display: grid;
     place-items: center;
-    min-height: 100vh;
     padding-bottom: 2rem;
     .form-header{
         display: flex;
@@ -20,7 +19,7 @@
             object-fit: cover;
         }
     }
-    .ease-form{
+    .sign-in{
         width: 60rem;
         background-color: $light-blue;
         padding: 6rem 5.5rem;
@@ -77,6 +76,31 @@
                 font-weight: 700;
                 cursor: pointer;
             }
+        }
+    }
+}
+@media screen and (max-width:650px) {
+    .form-wrapper{
+        .form-header{
+            margin: 4rem 2rem 2rem;
+            .logo-break{
+                margin:0 2rem;
+            }
+            img{
+                max-width: 6.4rem;
+                max-height: 6.4rem;
+                object-fit: cover;
+            }
+        }
+        .sign-in{
+            width: 100%;
+            max-width: 90vw;
+            padding: 4rem 2.4rem;
+        }
+        .otp{
+            width: 100%;
+            max-width: 90vw;
+            padding: 3rem 2.4rem;
         }
     }
 }

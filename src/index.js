@@ -5,10 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { EmailContext } from './Context/EmailContext';
-import SIgnUp from './pages/SIgnUp';
-import Dashboard from './components/dashboard';
-import Navbar from './components/Navbar';
+import Dashboard from './pages/dashboard';
+import Signin from './pages/sign-in';
+import ConfirmOtp from './pages/confirm-otp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +16,9 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}/>
         <Route path="dashboard" element={<Dashboard />} />
-        
+        <Route path="sign-in" element={<Signin />} />
+        <Route path="confirm-otp" element={<ConfirmOtp />} />
+
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
+import FormHeader from '../components/formHeader'
 
-function OTP() {
+function ConfirmOtp() {
     const [otp, setOtp] = useState(new Array(5).fill(""));
     const handleChange = (e, index) => {
       const value = e.target.value;
@@ -20,7 +21,9 @@ function OTP() {
       }
     };
   return (
-    <div className='otp'>
+    <div className='form-wrapper'>
+      <FormHeader/>
+      <div className='otp'>
            <form>
             <label htmlFor='otpcode'>
             <p>Enter otp code</p>
@@ -42,7 +45,8 @@ function OTP() {
               <p className='resend-code'>Didn't receive code? <span>Resend</span></p>
             </form>
     </div>
+    </div>
   )
 }
 
-export default OTP
+export default ConfirmOtp

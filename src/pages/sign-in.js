@@ -1,7 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
-import ErrorModal from './ErrorModal'
+import React from 'react'
+import FormHeader from '../components/formHeader'
+import ErrorModal from '../components/ErrorModal'
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-function EaseForm() {
+function Signin() {
   const [showModal, setModal] = useState(false)
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -37,8 +39,11 @@ function EaseForm() {
   useEffect(()=>{
     setModal(false)
   },[email])
+
   return (
-    <div className="ease-form ">
+    <div className='form-wrapper'>
+        <FormHeader/>
+        <div className="sign-in ">
       {showModal&&<ErrorModal msg={message} type={type}/>}
                 <label htmlFor='email'><p>Email</p></label>
                 <input name='email' placeholder='Enter your email' id='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
@@ -46,7 +51,8 @@ function EaseForm() {
                 <div className='sect-break'><p>OR</p></div>
                 <button className='variant-b'>Continue with Google</button>
         </div>
+    </div>
   )
 }
 
-export default EaseForm
+export default Signin
