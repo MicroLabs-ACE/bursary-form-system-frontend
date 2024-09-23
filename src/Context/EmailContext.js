@@ -1,10 +1,10 @@
-import { Children, createContext, useState } from "react";
+import {  createContext, useState } from "react";
 export const EmailContext = createContext();
-function Email() {
+function Email({children}) {
 const [email, setEmail] = useState('')
 return(
     <EmailContext.Provider value={{email, setEmail}}>
-        {Children}
+        {children}
     </EmailContext.Provider>
     
 )

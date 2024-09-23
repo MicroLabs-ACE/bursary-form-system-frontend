@@ -9,21 +9,29 @@ import Dashboard from './pages/dashboard';
 import Signin from './pages/sign-in';
 import ConfirmOtp from './pages/confirm-otp';
 import Auth  from './Context/AuthContext';
+import Email from './Context/EmailContext';
+import Profile from './pages/profile';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Auth>
+    <Email>
     <React.StrictMode>
       <BrowserRouter>
+  <Auth>
+
         <Routes>
           <Route path="/" element={<App />}/>
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="profile" element={<Profile />} />
+
           <Route path="sign-in" element={<Signin />} />
           <Route path="confirm-otp" element={<ConfirmOtp />} />
 
         </Routes>
+  </Auth>
+
       </BrowserRouter>
     </React.StrictMode>
-  </Auth>
+    </Email>
 
 );
 

@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import FormHeader from '../components/formHeader'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Modal from '../components/Modal';
+import { EmailContext } from '../Context/EmailContext';
 function Signin() {
+  const emailcontext = useContext(EmailContext)
   const [showModal, setModal] = useState(false)
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -20,7 +22,6 @@ function Signin() {
           'Content-Type': 'application/json',
         },
       });
-      console.log(response)
       if(response.status === 201) {
         setMessage('OTP sent to your Mail!');
         navigate('/confirm-otp');
@@ -45,8 +46,19 @@ function Signin() {
     }
   }
   useEffect(()=>{
+    emailcontext.setEmail(email)
     setModal(false)
-  },[email])
+  },[email, emailcontext])
+
+  const initiateGoogle = async()=>{
+    try {
+      const response = await axios.get('https://bursary-form-system-backend.onrender.com/auth/google');
+      console.log(response)
+     
+    } catch (error) {
+      console.log(error.response)
+    }
+  }
 
   return (
     <div className='form-wrapper'>
@@ -57,7 +69,7 @@ function Signin() {
                 <input name='email' placeholder='Enter your email' id='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
                 <button className='variant-a' onClick={sendOTP}>{submitting?('Checking...'):('Send OTP code')}</button>
                 <div className='sect-break'><p>OR</p></div>
-                <button className='variant-b'>Continue with Google</button>
+                <button className='variant-b' onClick={initiateGoogle}>Continue with Google</button>
         </div>
     </div>
   )

@@ -4,9 +4,6 @@ import edit from '../Assets/edit.svg'
 import draft from '../Assets/draft.svg'
 import filled from '../Assets/filled.svg'
 import Navbar from '../components/Navbar'
-import { AuthContext } from "../Context/AuthContext"
-import { useContext, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
 
 const availableList=[
   {
@@ -32,13 +29,6 @@ const availableList=[
 ]
 
 function Dashboard() {
- const AuthValue = useContext(AuthContext)
- const navigate=useNavigate()
-  useEffect(()=>{
-    if(AuthValue.Auth===false){
-      navigate('/sign-in')
-    }
-  },[AuthValue.Auth, AuthValue.setAuth,navigate])
 
   return (
     <>
