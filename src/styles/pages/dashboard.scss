@@ -42,11 +42,11 @@
             display: flex;
             justify-content: space-between;
             &__info{
+              padding-right: .8rem;
               p.mini{
                 color: #808080;
                 padding-top: .5rem;
               }
-              padding-right: .8rem;
             }
             &__edit{
               display: flex;

@@ -12,14 +12,17 @@ function ConfirmOtp() {
   const [message, setMessage] = useState('')
   const [type, setType] = useState('')
   const navigate = useNavigate();
-  const [submitting, setSubmitting] = useState(false)
+  const [submitting, setSubmitting] = useState(false)                                     
   const emailcontext = useContext(EmailContext)
     const [otp, setOtp] = useState(new Array(6).fill(""));
-    const [completeOTP, setCompleteOTP] = useState('')
+    const [token, setToken] = useState('')
     const [email, setEmail] = useState('')
     useEffect(()=>{
+      if(emailcontext.email.length<3){
+        navigate('/sign-in')
+      }
       setEmail(emailcontext.email)
-    },[emailcontext.email])
+    },[emailcontext.email, navigate])
     const handleChange = (e, index) => {
       const value = e.target.value;
       if (/^[0-9]$/.test(value) || value === "") {
@@ -37,21 +40,23 @@ function ConfirmOtp() {
         e.target.previousSibling.focus();
       }
     };
-    const handleOTPsubmit = async()=>{
-      setSubmitting(true)
+    useEffect(()=>{
       const fullotp= otp.join("")
       if (fullotp.length === 6) {
-        setCompleteOTP(fullotp);  
-        console.log( fullotp, email);
+        setToken(fullotp);  
       } 
+    },[otp])
+    const handleOTPsubmit = async()=>{
+      setSubmitting(true)
       try{
-        const response = await axios.post('https://bursary-form-system-backend.onrender.com/auth/otp/request', {email, completeOTP},
+        const response = await axios.post('https://bursary-form-system-backend.onrender.com/auth/otp/verify', {email, token},
           {
             headers: {
               'Content-Type': 'application/json',
             },
           });
-          if(response.status === 201) {
+          console.log(response)
+          if(response.status === 200) {
             Auth.setAuth(true)
             localStorage.setItem('zcode',true)
             navigate(`${Auth.history}`);
@@ -63,16 +68,18 @@ function ConfirmOtp() {
             setSubmitting(false)
           }
       }catch(error){
-        setMessage('Error verifying OTP. Please try again.');
+        setMessage('Error! Make sure OTP is correct');
         setType('error')
         setModal(true)
+        setSubmitting(false)
+
       }
     }
   return (
     <div className='form-wrapper'>
       <FormHeader/>
-      {showModal&&<Modal type={type} msg={message}/>}
       <div className='otp'>
+      {showModal&&<Modal type={type} msg={message}/>}
             <label htmlFor='otpcode'>
             <p>Enter otp code</p>
             </label>
@@ -89,7 +96,7 @@ function ConfirmOtp() {
                 />
               ))}
             </div>
-              <button className='variant-a' onClick={handleOTPsubmit}>{submitting?('Confirming'):('Send OTP code')}</button>
+              <button className='variant-a' onClick={handleOTPsubmit}>{submitting?('Verifying OTP...'):('Verify OTP')}</button>
               <p className='resend-code'>Didn't receive code? <span>Resend</span></p>
     </div>
     </div>

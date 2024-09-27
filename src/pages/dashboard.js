@@ -4,6 +4,7 @@ import edit from '../Assets/edit.svg'
 import draft from '../Assets/draft.svg'
 import filled from '../Assets/filled.svg'
 import Navbar from '../components/Navbar'
+import { Link } from "react-router-dom"
 
 const availableList=[
   {
@@ -46,7 +47,11 @@ function Dashboard() {
           <div className='available-forms__lists'>
             {availableList.map((form)=>{
               return(
-                <button key={form.id} className='variant-a'><li>{form.title}</li></button>
+                <Link key={form.id}  to={
+                  `/forms/${form.title.trim().split(' ').join('-')}`} state={{id:form.id}}>
+                 <button className='variant-a'><li>{form.title}</li></button>
+                </Link>
+               
               )
             })}
           </div>

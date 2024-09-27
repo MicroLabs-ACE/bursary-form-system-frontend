@@ -26,11 +26,6 @@ function Signin() {
         setMessage('OTP sent to your Mail!');
         navigate('/confirm-otp');
         setSubmitting(false)
-      } else if ((response.status === 400)) {
-        setMessage('Invalid Mail. Please enter a valid Mail.');
-        setType('error')
-        setModal(true)
-        setSubmitting(false)
       }
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -51,6 +46,7 @@ function Signin() {
   },[email, emailcontext])
 
   const initiateGoogle = async()=>{
+    console.log('clicked')
     try {
       const response = await axios.get('https://bursary-form-system-backend.onrender.com/auth/google');
       console.log(response)
@@ -62,12 +58,12 @@ function Signin() {
 
   return (
     <div className='form-wrapper'>
-      {showModal&&<Modal type={type} msg={message}/>}
         <FormHeader/>
         <div className="sign-in ">
+      {showModal&&<Modal type={type} msg={message}/>}
                 <label htmlFor='email'><p>Email</p></label>
                 <input name='email' placeholder='Enter your email' id='email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                <button className='variant-a' onClick={sendOTP}>{submitting?('Checking...'):('Send OTP code')}</button>
+                <button className='variant-a' onClick={sendOTP}>{submitting?('Please wait...'):('Send OTP code')}</button>
                 <div className='sect-break'><p>OR</p></div>
                 <button className='variant-b' onClick={initiateGoogle}>Continue with Google</button>
         </div>

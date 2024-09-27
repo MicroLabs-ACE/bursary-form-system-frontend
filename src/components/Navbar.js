@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Logo from "../Assets/logo.png"
 import Notification from '../Assets/notification.svg'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 function Navbar() {
   var [showlinks, setShowlinks] = useState(false)
@@ -14,8 +14,14 @@ function Navbar() {
               <span></span>
             </div>
            <div className='links'>
-           <Link className='active'><p>Dashboard</p></Link>
-            <Link><p>Pending Form</p></Link>
+           <NavLink
+            to="/dashboard"
+            className={({ isActive }) => (isActive ? ("active"):(''))}
+          ><p>Dashboard</p></NavLink>
+            <NavLink
+            to="/forms/Store-requisition-form"
+            className={({ isActive }) => (isActive ? ("active"):(''))}
+          ><p>Pending Form</p></NavLink>
             <Link><p>Form list</p></Link>
             <Link><p>Add Account</p></Link>
            </div>

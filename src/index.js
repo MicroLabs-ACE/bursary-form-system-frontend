@@ -11,6 +11,7 @@ import ConfirmOtp from './pages/confirm-otp';
 import Auth  from './Context/AuthContext';
 import Email from './Context/EmailContext';
 import Profile from './pages/profile';
+import Forms from './pages/form';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Email>
@@ -22,7 +23,7 @@ root.render(
           <Route path="/" element={<App />}/>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="profile" element={<Profile />} />
-
+          <Route path='forms/:formId' element={<Forms/>}/>
           <Route path="sign-in" element={<Signin />} />
           <Route path="confirm-otp" element={<ConfirmOtp />} />
 

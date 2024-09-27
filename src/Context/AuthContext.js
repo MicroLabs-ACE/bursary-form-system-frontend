@@ -13,16 +13,20 @@ let location = useLocation()
 
 const navigate=useNavigate()
 useEffect(() => {
-    if (location.pathname !== '/sign-in' && location.pathname !== '/confirm-otp') {
-      setHistory(location.pathname); 
-    }
-  }, [location.pathname]);
+  if(history===''){
+    setHistory(location.pathname); 
+  }
+  }, [history,location.pathname]);
   
   useEffect(() => {
     if (Auth === false && location.pathname !== '/sign-in' && location.pathname !== '/confirm-otp') {
       navigate('/sign-in');
-    } else if (Auth && history) {
-      navigate(`${history}`); 
+    } else if(Auth && location.pathname==='/confirm-otp'){
+      if(history==='/sign-in'||history==='/confirm-otp'){
+        navigate('/dashboard')
+      }else {
+        navigate(`${history}`); 
+      }
     }
   }, [Auth, history, location.pathname, navigate]);
 

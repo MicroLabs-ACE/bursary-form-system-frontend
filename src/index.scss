@@ -11,6 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+//Colors definition
+$primary-blue:#28145C;
+$deep-blue:#160D2F;
+$grey-e:#EEEEEE;
+$grey-f:#FFFFFF;
+$light-blue:#E7ECFF63;
+$border-blue:#28145C17;
+$black: #000000;
+$success-green:rgba(76, 175, 80, 0.09);
+$primary-green:#4CAF50;
+$gray:#808080;
 *{
   margin: 0;
   padding: 0;
@@ -31,22 +42,18 @@ p{
     font-size: 1rem;
     font-weight: 400;
   }
+  &.tiny{
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: $gray;
+  }
   &.midi{
     font-size: 1.4rem;
     font-weight: 400;
   }
 }
 
-//Colors definition
-$primary-blue:#28145C;
-$deep-blue:#160D2F;
-$grey-e:#EEEEEE;
-$grey-f:#FFFFFF;
-$light-blue:#E7ECFF63;
-$border-blue:#28145C17;
-$black: #000000;
-$success-green:rgba(76, 175, 80, 0.09);
-$primary-green:#4CAF50;
+
 
 h4{
   color: $primary-blue;
@@ -90,5 +97,5 @@ button{
 @import '../src//styles/components/navbar.scss';
 @import '../src//styles/components/modal.scss';
 @import '../src//styles/pages/dashboard.scss';
-
-
+@import '../src//styles/pages/profile.scss';
+@import '../src//styles/pages/form.scss';
