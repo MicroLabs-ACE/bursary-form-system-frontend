@@ -5,6 +5,8 @@ import draft from '../Assets/draft.svg'
 import filled from '../Assets/filled.svg'
 import Navbar from '../components/Navbar'
 import { Link } from "react-router-dom"
+import List from "../Context/FormContext"
+import { useContext } from "react"
 
 const availableList=[
   {
@@ -30,6 +32,7 @@ const availableList=[
 ]
 
 function Dashboard() {
+  const list = useContext(List)
 
   return (
     <>

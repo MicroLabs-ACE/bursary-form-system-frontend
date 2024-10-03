@@ -11,14 +11,15 @@ import ConfirmOtp from './pages/confirm-otp';
 import Auth  from './Context/AuthContext';
 import Email from './Context/EmailContext';
 import Profile from './pages/profile';
+import List from './Context/FormContext';
 import Forms from './pages/form';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Email>
+  <List>
     <React.StrictMode>
       <BrowserRouter>
   <Auth>
-
         <Routes>
           <Route path="/" element={<App />}/>
           <Route path="dashboard" element={<Dashboard />} />
@@ -32,6 +33,7 @@ root.render(
 
       </BrowserRouter>
     </React.StrictMode>
+  </List>
     </Email>
 
 );

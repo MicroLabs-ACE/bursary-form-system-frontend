@@ -1,8 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import profileImg from '../Assets/profile.png'
 import Navbar from '../components/Navbar'
+import axios from 'axios'
 
 function Profile() {
+  const [user, setUser] = useState('')
+
+ const getUser = async()=>{
+    try {
+      const response = await axios.get('https://bursary-form-system-backend.onrender.com/auth/user',
+        {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log(response.data)
+    } catch (error) {
+     console.log(error)
+  }
+}
+useEffect(()=>{
+    getUser()
+},[])
   return (
     <div className='profile'>
       <Navbar/>
