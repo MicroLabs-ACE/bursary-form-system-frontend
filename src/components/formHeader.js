@@ -1,9 +1,7 @@
 import React from 'react'
-import EaseForm from '../components/EaseForm'
 import Logo from "../Assets/logo.png"
-import OTP from '../components/OTP'
 
-function SIgnUp() {
+function FormHeader() {
   
   return (
     <div className='form-wrapper'>
@@ -15,10 +13,9 @@ function SIgnUp() {
           <h6>powered by OAU BURSARY </h6>
         </div>
       </div>
-      <EaseForm/>
     </div>
 
   )
 }
 
-export default SIgnUp
+export default FormHeader

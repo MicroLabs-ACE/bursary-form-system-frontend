@@ -5,22 +5,37 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-import SIgnUp from './pages/SIgnUp';
-import Navbar from './components/Navbar';
-
+import Dashboard from './pages/dashboard';
+import Signin from './pages/sign-in';
+import ConfirmOtp from './pages/confirm-otp';
+import Auth  from './Context/AuthContext';
+import Email from './Context/EmailContext';
+import Profile from './pages/profile';
+import List from './Context/FormContext';
+import Forms from './pages/form';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-    <Navbar/>
+    <Email>
+  <List>
+    <React.StrictMode>
+      <BrowserRouter>
+  <Auth>
+        <Routes>
+          <Route path="/" element={<App />}/>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path='forms/:formId' element={<Forms/>}/>
+          <Route path="sign-in" element={<Signin />} />
+          <Route path="confirm-otp" element={<ConfirmOtp />} />
 
-      <Routes>
-        <Route path="/" element={<App />}/>
-        <Route path="sign-up" element={<SIgnUp />} />
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+        </Routes>
+  </Auth>
+
+      </BrowserRouter>
+    </React.StrictMode>
+  </List>
+    </Email>
+
 );
 
 // If you want to start measuring performance in your app, pass a function
