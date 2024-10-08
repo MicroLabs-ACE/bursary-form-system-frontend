@@ -40,6 +40,47 @@ function Signin() {
       setSubmitting(false)
     }
   }
+
+  //   const sendOTP = async () => {
+  //   setSubmitting(true);
+  //   try {
+  //     // const response = await fetch('https://bursary-form-system-backend.onrender.com/auth/otp/request', {
+  //     //   method: 'POST',
+  //     //   headers: {
+  //     //     'Content-Type': 'application/json',
+  //     //   },
+  //     //   body: JSON.stringify({ email }),
+  //     // });
+
+  //     const response = await axios.post(
+  //       "https://bursary-form-system-backend.onrender.com/auth/otp/request",
+  //       JSON.stringify({ email }),
+  //       { headers: { "Content-Type": "application/json" } }
+  //     );
+  
+  //     if (response.status === 201) {
+  //       setMessage('OTP sent to your Mail!');
+  //       navigate('/confirm-otp');
+  //       setSubmitting(false);
+  //     } else if (response.status === 400) {
+  //       setMessage('Mail entered is invalid, enter a valid mail.');
+  //       setType('error');
+  //       setModal(true);
+  //       setSubmitting(false);
+  //     } else {
+  //       setMessage('Error verifying Mail. Please try again.');
+  //       setType('error');
+  //       setModal(true);
+  //       setSubmitting(false);
+  //     }
+  //   } catch (error) {
+  //     console.error('There was a problem with the fetch operation:', error);
+  //     setMessage('Error verifying Mail. Please try again.');
+  //     setType('error');
+  //     setModal(true);
+  //     setSubmitting(false);
+  //   }
+  // };
   useEffect(()=>{
     emailcontext.setEmail(email)
     setModal(false)
