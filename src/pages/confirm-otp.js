@@ -5,7 +5,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Modal from "../components/Modal";
 import { AuthContext } from "../Context/AuthContext";
-import instance from "../Context/Base_url";
 
 function ConfirmOtp() {
   const Auth = useContext(AuthContext);
@@ -47,30 +46,69 @@ function ConfirmOtp() {
       setToken(fullotp);
     }
   }, [otp]);
+  // const handleOTPsubmit = async () => {
+  //   setSubmitting(true);
+  //   try {
+  //     const response = await
+  //       instance.post('/auth/otp/verify',
+  //       { email, token },
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     console.log(response);
+  //     if (response.status === 200) {
+  //       Auth.setAuth(true);
+  //       // localStorage.setItem("zcode", true);
+  //       // navigate(`${Auth.history}`);
+  //       setSubmitting(false);
+  //     } else if (response.status === 400) {
+  //       setMessage("Wrong OTP!");
+  //       setType("error");
+  //       setModal(true);
+  //       setSubmitting(false);
+  //     }
+  //   } catch (error) {
+  //     setMessage("Error! Make sure OTP is correct");
+  //     setType("error");
+  //     setModal(true);
+  //     setSubmitting(false);
+  //   }
+  // };
   const handleOTPsubmit = async () => {
     setSubmitting(true);
     try {
-      const response = await 
-        instance.post('/auth/otp/verify',
-        { email, token },
+      const response = await fetch(
+        "https://bursary-form-system-backend.onrender.com/auth/otp/verification",
         {
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+          body: JSON.stringify({
+            email: email,
+            token: token,
+          }),
         }
       );
       console.log(response);
+      console.log("Headers:", response.headers);
       if (response.status === 200) {
-        Auth.setAuth(true);
-        localStorage.setItem("zcode", true);
-        navigate(`${Auth.history}`);
-        setSubmitting(false);
+        const data = await response.json();
+        Auth.setXtoken=data.accessToken
+        Auth.setRtoken= data.refreshToken
+        localStorage.setItem("xToken", data.accessToken); 
+        localStorage.setItem("rToken", data.refreshToken); 
+        navigate(`${Auth.history}`); 
       } else if (response.status === 400) {
         setMessage("Wrong OTP!");
         setType("error");
         setModal(true);
-        setSubmitting(false);
       }
+
+      setSubmitting(false);
     } catch (error) {
       setMessage("Error! Make sure OTP is correct");
       setType("error");
@@ -78,6 +116,7 @@ function ConfirmOtp() {
       setSubmitting(false);
     }
   };
+
   return (
     <div className="form-wrapper">
       <FormHeader />

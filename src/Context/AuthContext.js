@@ -1,40 +1,44 @@
-import {  createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
-function Auth({children}) {
-const [Auth, setAuth] = useState(true)
-const [history, setHistory]  = useState('')
-useEffect(()=>{
- const zcode = JSON.parse(localStorage.getItem('zcode'))
- setAuth(zcode||false)
-},[Auth])
-let location = useLocation()
-
-const navigate=useNavigate()
-useEffect(() => {
-  if(history===''){
-    setHistory(location.pathname); 
-  }
-  }, [history,location.pathname]);
-  
+function Auth({ children }) {
+  const [Auth, setAuth] = useState(true);
+  const[xToken, setXtoken] = useState(null)
+  const[rToken, setRtoken] = useState(null)
+  const [history, setHistory] = useState("");
   useEffect(() => {
-    if (Auth === false && location.pathname !== '/sign-in' && location.pathname !== '/confirm-otp') {
-      navigate('/sign-in');
-    } else if(Auth && location.pathname==='/confirm-otp'){
+    const xtoken = localStorage.getItem("xToken");
+    const rtoken = localStorage.getItem("rToken");
+    setXtoken(xtoken||'');
+    setXtoken(rtoken||'');
+  }, [xToken, rToken]);
+  let location = useLocation();
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (history === "") {
+      setHistory(location.pathname);
+    }
+  }, [history, location.pathname]);
+
+  useEffect(() => {
+    if(xToken){
       if(history==='/sign-in'||history==='/confirm-otp'){
         navigate('/dashboard')
-      }else {
-        navigate(`${history}`); 
+      }else{
+        navigate(`${history}`)
       }
+    }else{
+      navigate("/sign-in");
     }
-  }, [Auth, history, location.pathname, navigate]);
+   
+  }, [xToken, history, navigate]);
 
-return(
-    <AuthContext.Provider value={{Auth, setAuth, history}}>
-        {children}
+  return (
+    <AuthContext.Provider value={{ history, setXtoken, xToken, rToken, setRtoken }}>
+      {children}
     </AuthContext.Provider>
-    
-)
+  );
 }
-export default Auth
+export default Auth;

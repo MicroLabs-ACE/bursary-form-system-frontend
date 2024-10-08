@@ -6,11 +6,16 @@ import instance from "../Context/Base_url";
 function Profile() {
   const [user, setUser] = useState("");
   const getUser = async () => {
+    console.log(localStorage.getItem('rToken'))
     try {
-      const response = await  instance.get('/auth/user',
+      const response = await instance.get('/auth/user',
         {
+        withCredentials: true,
           headers: {
             "Content-Type": "application/json",
+            'x-access-token':localStorage.getItem('xToken'),
+            'x-refresh-token':localStorage.getItem('rToken'),
+           
           },
         }
       );
@@ -20,7 +25,11 @@ function Profile() {
     }
   };
   useEffect(() => {
-    getUser();
+    const xtoken=localStorage.getItem('xToken')
+    if(xtoken){
+    console.log('initiating')
+      getUser();
+    }
   }, []);
   return (
     <div className="profile">
