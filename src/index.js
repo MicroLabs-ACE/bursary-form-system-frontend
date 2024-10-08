@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import Dashboard from '../src/pages/dashboard'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Dashboard from './pages/dashboard';
 import Signin from './pages/sign-in';
 import ConfirmOtp from './pages/confirm-otp';
 import Auth  from './Context/AuthContext';
