@@ -7,32 +7,39 @@ import Dashboard from '../src/pages/dashboard'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Signin from './pages/sign-in';
 import ConfirmOtp from './pages/confirm-otp';
-import Auth  from './Context/AuthContext';
 import Email from './Context/EmailContext';
 import Profile from './pages/profile';
 import List from './Context/FormContext';
 import Forms from './pages/form';
+import { Auth } from './Context/AuthContext';
+import User from './Context/User';
+import MainLayout from './components/mainLayout';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Email>
+  <User>
   <List>
+
     <React.StrictMode>
       <BrowserRouter>
   <Auth>
         <Routes>
-          <Route path="/" element={<App />}/>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path='forms/:formId' element={<Forms/>}/>
+          <Route element={<MainLayout />}>
+              <Route path="/" element={<App />}/>
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path='forms/:formId' element={<Forms/>}/>
+          </Route>
           <Route path="sign-in" element={<Signin />} />
           <Route path="confirm-otp" element={<ConfirmOtp />} />
-
         </Routes>
   </Auth>
 
       </BrowserRouter>
     </React.StrictMode>
-  </List>
+    </List>
+
+  </User>
     </Email>
 
 );

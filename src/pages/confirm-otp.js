@@ -1,13 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import FormHeader from "../components/formHeader";
 import { EmailContext } from "../Context/EmailContext";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Modal from "../components/Modal";
-import { AuthContext } from "../Context/AuthContext";
+import { useAuth } from "../Context/AuthContext";
 
 function ConfirmOtp() {
-  const Auth = useContext(AuthContext);
   const [showModal, setModal] = useState(false);
   const [message, setMessage] = useState("");
   const [type, setType] = useState("");
@@ -15,8 +13,11 @@ function ConfirmOtp() {
   const [submitting, setSubmitting] = useState(false);
   const emailcontext = useContext(EmailContext);
   const [otp, setOtp] = useState(new Array(6).fill(""));
-  const [token, setToken] = useState("");
   const [email, setEmail] = useState("");
+  const[token, setToken] = useState('')
+  const {signin, history} = useAuth()
+  console.log(history)
+
   useEffect(() => {
     if (emailcontext.email.length < 3) {
       navigate("/sign-in");
@@ -46,37 +47,7 @@ function ConfirmOtp() {
       setToken(fullotp);
     }
   }, [otp]);
-  // const handleOTPsubmit = async () => {
-  //   setSubmitting(true);
-  //   try {
-  //     const response = await
-  //       instance.post('/auth/otp/verify',
-  //       { email, token },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     );
-  //     console.log(response);
-  //     if (response.status === 200) {
-  //       Auth.setAuth(true);
-  //       // localStorage.setItem("zcode", true);
-  //       // navigate(`${Auth.history}`);
-  //       setSubmitting(false);
-  //     } else if (response.status === 400) {
-  //       setMessage("Wrong OTP!");
-  //       setType("error");
-  //       setModal(true);
-  //       setSubmitting(false);
-  //     }
-  //   } catch (error) {
-  //     setMessage("Error! Make sure OTP is correct");
-  //     setType("error");
-  //     setModal(true);
-  //     setSubmitting(false);
-  //   }
-  // };
+  
   const handleOTPsubmit = async () => {
     setSubmitting(true);
     try {
@@ -93,15 +64,12 @@ function ConfirmOtp() {
           }),
         }
       );
-      console.log(response);
-      console.log("Headers:", response.headers);
       if (response.status === 200) {
         const data = await response.json();
-        Auth.setXtoken=data.accessToken
-        Auth.setRtoken= data.refreshToken
-        localStorage.setItem("xToken", data.accessToken); 
-        localStorage.setItem("rToken", data.refreshToken); 
-        navigate(`${Auth.history}`); 
+        signin({x: data.accessToken, r:  data.refreshToken})
+        localStorage.setItem('xToken', data.accessToken)
+        localStorage.setItem('rToken', data.refreshToken)
+        history!=='/sign-in'?(navigate(`${history}`)):(navigate('/dashboard')); 
       } else if (response.status === 400) {
         setMessage("Wrong OTP!");
         setType("error");

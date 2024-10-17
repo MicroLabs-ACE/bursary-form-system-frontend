@@ -1,102 +1,39 @@
-.container{
-    padding: 3rem 5rem;
-    .form-section{
-      padding: 5.7rem 0;
+.dashboard{
+  padding: 7.4rem;
+  width: 100%;
+  min-height: 100vh;
+  &__header{
+    h6{
+    font-weight: 500;
+      padding-bottom: 1.2rem;
+    }    
+    p{
+      color: $gray;
+    }
+  }
+  &__available-forms{
+    h6{
+      padding: 4rem 0 2rem;
+    }
+    .forms{
+      width: 100%;
       display: grid;
-      grid-template-columns: 5fr 3.5fr;
-      gap: 2rem;
-      .form-heading{
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-        padding-bottom: 1.4rem;
-        img{
-          width: 2.4rem;
-          height: 2.4rem;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem ;
+      .card{
+        padding: 1.5rem;
+        .midi{
+          font-weight: 700;
         }
-      }
-      .available-forms{
-        &__lists{
-          button{
-            margin-top: 1.9rem;
-            text-align: left;
-          }
+        .mini{
+          color: $gray;
+          padding: 1.1rem 0;
         }
-      }
-      .other-forms{
         button{
           width: fit-content;
-          padding: 1.2rem 2.7rem;
-          text-align: right;
-          display: flex;
-          margin: 1rem 0 0 auto;
-          justify-content: right;
-        }
-        .form-list{
-          margin-bottom:3.3rem;
-          padding: 0 1.9rem 1rem ;
-          border-radius: 10px;
-          background: #F8F8F8;
-          .form-card{
-            padding: 2.5rem 0 1.4rem;
-            display: flex;
-            justify-content: space-between;
-            &__info{
-              padding-right: .8rem;
-              p.mini{
-                color: #808080;
-                padding-top: .5rem;
-              }
-            }
-            &__edit{
-              display: flex;
-              align-items: center;
-              p{
-                font-size: 1.2rem;
-              }
-              img{
-                width: 1.4rem;
-                height: 1.4rem;
-              }
-            }
-            &__receipt{
-              text-decoration: underline;
-              p{
-              font-size: 1.2rem;
-  
-              }
-            }
-            &:not(:first-child){
-              border-top: 1px solid rgba(0, 0, 0, 0.15);
-            }
-          }
+          padding: .5rem .7rem;
         }
       }
     }
   }
-  @media screen and (max-width:1100px) {
-    .container{
-        padding: 3rem;
-        .form-section{
-            grid-template-columns: 5fr 4fr;
-        }
-    }
-  }
-  @media screen and (max-width:900px) {
-    .container{
-        padding: 2.4rem;
-        .form-section{
-            padding: 4rem 0;
-            display: block;
-            .available-forms{
-                margin-bottom: 5rem;
-            }
-            .other-forms{
-                .form-list{
-                    padding: 0 1.4rem .8rem;
-                }
-                
-            }
-        }
-    }
-  }
+}
