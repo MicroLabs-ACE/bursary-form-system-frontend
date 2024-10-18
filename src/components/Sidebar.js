@@ -6,7 +6,7 @@ import home from "../Assets/home.png"
 import userAdd from "../Assets/user-add.png"
 import note from "../Assets/note.png"
 import logoutIcon from "../Assets/logout.png"
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 
 function Sidebar() {
@@ -19,7 +19,7 @@ function Sidebar() {
           <Link to={'/profile'}><img src={userAvatar} className='userAvatar' alt='userAvatar'/></Link>
         </div>
         <div className='sidebar__contents'>
-          <div className='side-link'><img src={home} alt='home'/> Dashboard</div>
+        <NavLink to={'/dashboard'} className={({ isActive }) => (isActive ? ("active side-link"):('side-link'))}><div className=''><img src={home} alt='home'/> Dashboard</div></NavLink>
           <div className='side-link'><img src={note} alt='home'/> Form List</div>
           <div className='side-link'><img src={userAdd} alt='home'/> Add Account</div>
           <div className='side-link logout'><img src={logoutIcon} alt='home'/> Log out</div>

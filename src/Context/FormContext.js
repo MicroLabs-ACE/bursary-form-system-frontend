@@ -22,7 +22,6 @@ const getForm = async () => {
       setList(result);
     }
     else{
-    setError(true);
       throw new Error("not okay");
       
     }

@@ -1,4 +1,5 @@
 .form{
+    width: 100%;
     &-section{
         padding: 3rem 16rem;
         h4{
@@ -12,6 +13,21 @@
         }
         button.variant-a{
             margin-top: 1.5rem;
+        }
+        label{
+            font-size: 1.4rem;
+            color: $primary-blue;
+            text-decoration: capitalize;
+        }
+        input{
+            margin: .4rem  0 1rem;
+            display: block;
+            width: 100%;
+            padding: .5rem;
+            font-size: 1.6rem;
+            background-color: white;
+            outline: none;
+            border: none;
         }
     }
 }

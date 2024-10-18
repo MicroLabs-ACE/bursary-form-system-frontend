@@ -7,7 +7,6 @@ function Profile() {
   const myProfile = useContext(UserContext)
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const error= useState(myProfile?.error);
 
 
   useEffect(()=>{
@@ -19,11 +18,7 @@ function Profile() {
   if(loading){
     return <div className="loader"><div></div></div>
   }
-  if(error){
-    return <div className="errormsg">
-      Error loading profile, please reload
-    </div>
-  }
+ 
   return (
     <div className="profile">
         <div className="profile__avatar card">
